@@ -3,9 +3,9 @@ require 'action_view'
 class Cat < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
-  before_update do
-    self.owner_id == current_user.id
-  end
+  # before_update do
+  #   self.owner_id == current_user.id
+  # end
 
   CAT_COLORS = %w(black white orange brown)
 
@@ -25,7 +25,7 @@ class Cat < ActiveRecord::Base
     :color,
     :name,
     :sex,
-    :owner_id,
+    :user_id,
     presence: true
   )
 
@@ -35,4 +35,5 @@ class Cat < ActiveRecord::Base
   def age
     time_ago_in_words(birth_date)
   end
+
 end
